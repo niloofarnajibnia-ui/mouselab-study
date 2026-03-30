@@ -1,0 +1,214 @@
+<HTML>
+<HEAD>
+<TITLE>MouselabWEB Survey</TITLE>
+<script language=javascript src="mlweb.js"></SCRIPT>
+<link rel="stylesheet" href="mlweb.css" type="text/css">
+</head>
+
+<body onLoad="timefunction('onload','body','body')">
+
+<!--BEGIN TABLE STRUCTURE-->
+<SCRIPT language="javascript">
+//override defaults
+mlweb_outtype="CSV";
+mlweb_fname="mlwebform";
+tag = "a0^a1^a2^a3^a4^a5`"
+ + "b0^b1^b2^b3^b4^b5`"
+ + "c0^c1^c2^c3^c4^c5`"
+ + "d0^d1^d2^d3^d4^d5`"
+ + "e0^e1^e2^e3^e4^e5";
+
+txt = "^Difficulty ^Workload ^Instructor Quality ^Personal Interest^Grade Leniency`"
+ + "Course A^3^4^6^5^8`"
+ + "Course B^7^8^9^9^4`"
+ + "Course C^5^6^7^8^6`"
+ + "Course D^2^7^5^6^9";
+
+state = "0^0^0^0^0^0`"
+ + "0^1^1^1^1^1`"
+ + "0^1^1^1^1^1`"
+ + "0^1^1^1^1^1`"
+ + "0^1^1^1^1^1";
+
+box = "^^^^^`"
+ + "^?^?^?^?^?`"
+ + "^?^?^?^?^?`"
+ + "^?^?^?^?^?`"
+ + "^?^?^?^?^?";
+
+CBCol = "0^0^0^0^0^0";
+CBRow = "0^0^0^0^0";
+W_Col = "100^100^100^100^100^100";
+H_Row = "50^50^50^50^50";
+
+chkchoice = false;
+btnFlg = 2;
+btnType = "button";
+btntxt = "Course Length^Course A^Course B^Course C^Course D";
+btnstate = "0^1^1^1^1";
+btntag = "btn1^btn2^btn3^btn4^btn5";
+to_email = "niloofarnajibnia@gmail.com";
+colFix = true;
+rowFix = true;
+CBpreset = false;
+evtOpen = 1;
+evtClose = 1;
+chkFrm=false;
+warningTxt = "Some questions have not been answered. Please answer all questions before continuing!";
+tmTotalSec = 60;
+tmStepSec = 1;
+tmWidthPx = 200;
+tmFill = true;
+tmShowTime = true;
+tmCurTime = 0;
+tmActive = false;
+tmDirectStart = true;
+tmMinLabel = "min";
+tmSecLabel = "sec";
+tmLabel = "Timer: ";
+
+//Delay: b1 b2 b3 b4 b5 c1 c2 c3 c4 c5 d1 d2 d3 d4 d5 e1 e2 e3 e4 e5
+delay = "0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0`"
+ + "0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0`"
+ + "0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0`"
+ + "0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0`"
+ + "0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0`"
+ + "0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0`"
+ + "0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0`"
+ + "0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0`"
+ + "0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0`"
+ + "0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0`"
+ + "0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0`"
+ + "0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0`"
+ + "0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0`"
+ + "0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0`"
+ + "0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0`"
+ + "0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0`"
+ + "0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0`"
+ + "0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0`"
+ + "0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0`"
+ + "0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0^0";
+activeClass = "actTD";
+inactiveClass = "inactTD";
+boxClass = "boxTD";
+cssname = "mlweb.css";
+nextURL = "trial8.html";
+expname = "trial7";
+randomOrder = false;
+recOpenCells = false;
+masterCond = 1;
+loadMatrices();
+</SCRIPT>
+<!--END TABLE STRUCTURE-->
+
+<FORM name="mlwebform" onSubmit="return checkForm(this)" method="POST" action="https://www.mouselabweb.org/mlwebmailer.php"><INPUT type=hidden name="procdata" value="">
+<input type=hidden name="subject" value="">
+<input type=hidden name="expname" value="">
+<input type=hidden name="nextURL" value="">
+<input type=hidden name="choice" value="">
+<input type=hidden name="condnum" value="">
+<input type=hidden name="to_email" value="">
+<!--BEGIN preHTML-->
+
+<!--END preHTML-->
+<!-- MOUSELAB TABLE -->
+<TABLE border=1>
+<TR>
+<!--cell a0(tag:a0)-->
+<TD align=center valign=middle><DIV ID="a0_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="a0_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="a0_td" align=center valign=center width=95 height=45 class="inactTD"></TD></TABLE></DIV><DIV ID="a0_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="a0_tdbox" align=center valign=center width=95 height=45 class="boxTD"></TD></TABLE></DIV><DIV ID="a0_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="a0" onClick="SwitchCont('a0',event)"><IMG NAME="a0" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell-->
+<!--cell a1(tag:a1)-->
+<TD align=center valign=middle><DIV ID="a1_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="a1_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="a1_td" align=center valign=center width=95 height=45 class="inactTD">Difficulty </TD></TABLE></DIV><DIV ID="a1_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="a1_tdbox" align=center valign=center width=95 height=45 class="boxTD"></TD></TABLE></DIV><DIV ID="a1_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="a1" onClick="SwitchCont('a1',event)"><IMG NAME="a1" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell-->
+<!--cell a2(tag:a2)-->
+<TD align=center valign=middle><DIV ID="a2_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="a2_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="a2_td" align=center valign=center width=95 height=45 class="inactTD">Workload </TD></TABLE></DIV><DIV ID="a2_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="a2_tdbox" align=center valign=center width=95 height=45 class="boxTD"></TD></TABLE></DIV><DIV ID="a2_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="a2" onClick="SwitchCont('a2',event)"><IMG NAME="a2" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell-->
+<!--cell a3(tag:a3)-->
+<TD align=center valign=middle><DIV ID="a3_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="a3_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="a3_td" align=center valign=center width=95 height=45 class="inactTD">Instructor Quality </TD></TABLE></DIV><DIV ID="a3_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="a3_tdbox" align=center valign=center width=95 height=45 class="boxTD"></TD></TABLE></DIV><DIV ID="a3_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="a3" onClick="SwitchCont('a3',event)"><IMG NAME="a3" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell-->
+<!--cell a4(tag:a4)-->
+<TD align=center valign=middle><DIV ID="a4_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="a4_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="a4_td" align=center valign=center width=95 height=45 class="inactTD">Personal Interest</TD></TABLE></DIV><DIV ID="a4_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="a4_tdbox" align=center valign=center width=95 height=45 class="boxTD"></TD></TABLE></DIV><DIV ID="a4_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="a4" onClick="SwitchCont('a4',event)"><IMG NAME="a4" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell-->
+<!--cell a5(tag:a5)-->
+<TD align=center valign=middle><DIV ID="a5_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="a5_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="a5_td" align=center valign=center width=95 height=45 class="inactTD">Grade Leniency</TD></TABLE></DIV><DIV ID="a5_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="a5_tdbox" align=center valign=center width=95 height=45 class="boxTD"></TD></TABLE></DIV><DIV ID="a5_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="a5" onClick="SwitchCont('a5',event)"><IMG NAME="a5" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell--><TD ID="btn_0" style="border-top-style: none; border-right-style: none; border-bottom-style: none;"> </TD></TR><TR>
+<!--cell b0(tag:b0)-->
+<TD align=center valign=middle><DIV ID="b0_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="b0_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="b0_td" align=center valign=center width=95 height=45 class="inactTD">Course A</TD></TABLE></DIV><DIV ID="b0_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="b0_tdbox" align=center valign=center width=95 height=45 class="boxTD"></TD></TABLE></DIV><DIV ID="b0_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="b0" onClick="SwitchCont('b0',event)"><IMG NAME="b0" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell-->
+<!--cell b1(tag:b1)-->
+<TD align=center valign=middle><DIV ID="b1_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="b1_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="b1_td" align=center valign=center width=95 height=45 class="actTD">3</TD></TABLE></DIV><DIV ID="b1_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="b1_tdbox" align=center valign=center width=95 height=45 class="boxTD">?</TD></TABLE></DIV><DIV ID="b1_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="b1" onClick="SwitchCont('b1',event)"><IMG NAME="b1" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell-->
+<!--cell b2(tag:b2)-->
+<TD align=center valign=middle><DIV ID="b2_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="b2_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="b2_td" align=center valign=center width=95 height=45 class="actTD">4</TD></TABLE></DIV><DIV ID="b2_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="b2_tdbox" align=center valign=center width=95 height=45 class="boxTD">?</TD></TABLE></DIV><DIV ID="b2_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="b2" onClick="SwitchCont('b2',event)"><IMG NAME="b2" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell-->
+<!--cell b3(tag:b3)-->
+<TD align=center valign=middle><DIV ID="b3_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="b3_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="b3_td" align=center valign=center width=95 height=45 class="actTD">6</TD></TABLE></DIV><DIV ID="b3_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="b3_tdbox" align=center valign=center width=95 height=45 class="boxTD">?</TD></TABLE></DIV><DIV ID="b3_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="b3" onClick="SwitchCont('b3',event)"><IMG NAME="b3" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell-->
+<!--cell b4(tag:b4)-->
+<TD align=center valign=middle><DIV ID="b4_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="b4_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="b4_td" align=center valign=center width=95 height=45 class="actTD">5</TD></TABLE></DIV><DIV ID="b4_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="b4_tdbox" align=center valign=center width=95 height=45 class="boxTD">?</TD></TABLE></DIV><DIV ID="b4_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="b4" onClick="SwitchCont('b4',event)"><IMG NAME="b4" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell-->
+<!--cell b5(tag:b5)-->
+<TD align=center valign=middle><DIV ID="b5_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="b5_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="b5_td" align=center valign=center width=95 height=45 class="actTD">8</TD></TABLE></DIV><DIV ID="b5_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="b5_tdbox" align=center valign=center width=95 height=45 class="boxTD">?</TD></TABLE></DIV><DIV ID="b5_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="b5" onClick="SwitchCont('b5',event)"><IMG NAME="b5" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell--><TD ID="btn_1" style="border-left-style: none; border-right-style: none; border-bottom-style: none;" align=center valign=middle><INPUT type="button" class="btnStyle" name="btn2" value="Course A" onMouseOver="timefunction('mouseover','btn2','Course A')" onClick="recChoice('onclick','btn2','Course A')" onMouseOut="timefunction('mouseout','btn2','Course A')"></TD>
+</TR><TR>
+<!--cell c0(tag:c0)-->
+<TD align=center valign=middle><DIV ID="c0_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="c0_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="c0_td" align=center valign=center width=95 height=45 class="inactTD">Course B</TD></TABLE></DIV><DIV ID="c0_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="c0_tdbox" align=center valign=center width=95 height=45 class="boxTD"></TD></TABLE></DIV><DIV ID="c0_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="c0" onClick="SwitchCont('c0',event)"><IMG NAME="c0" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell-->
+<!--cell c1(tag:c1)-->
+<TD align=center valign=middle><DIV ID="c1_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="c1_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="c1_td" align=center valign=center width=95 height=45 class="actTD">7</TD></TABLE></DIV><DIV ID="c1_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="c1_tdbox" align=center valign=center width=95 height=45 class="boxTD">?</TD></TABLE></DIV><DIV ID="c1_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="c1" onClick="SwitchCont('c1',event)"><IMG NAME="c1" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell-->
+<!--cell c2(tag:c2)-->
+<TD align=center valign=middle><DIV ID="c2_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="c2_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="c2_td" align=center valign=center width=95 height=45 class="actTD">8</TD></TABLE></DIV><DIV ID="c2_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="c2_tdbox" align=center valign=center width=95 height=45 class="boxTD">?</TD></TABLE></DIV><DIV ID="c2_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="c2" onClick="SwitchCont('c2',event)"><IMG NAME="c2" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell-->
+<!--cell c3(tag:c3)-->
+<TD align=center valign=middle><DIV ID="c3_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="c3_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="c3_td" align=center valign=center width=95 height=45 class="actTD">9</TD></TABLE></DIV><DIV ID="c3_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="c3_tdbox" align=center valign=center width=95 height=45 class="boxTD">?</TD></TABLE></DIV><DIV ID="c3_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="c3" onClick="SwitchCont('c3',event)"><IMG NAME="c3" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell-->
+<!--cell c4(tag:c4)-->
+<TD align=center valign=middle><DIV ID="c4_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="c4_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="c4_td" align=center valign=center width=95 height=45 class="actTD">9</TD></TABLE></DIV><DIV ID="c4_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="c4_tdbox" align=center valign=center width=95 height=45 class="boxTD">?</TD></TABLE></DIV><DIV ID="c4_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="c4" onClick="SwitchCont('c4',event)"><IMG NAME="c4" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell-->
+<!--cell c5(tag:c5)-->
+<TD align=center valign=middle><DIV ID="c5_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="c5_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="c5_td" align=center valign=center width=95 height=45 class="actTD">4</TD></TABLE></DIV><DIV ID="c5_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="c5_tdbox" align=center valign=center width=95 height=45 class="boxTD">?</TD></TABLE></DIV><DIV ID="c5_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="c5" onClick="SwitchCont('c5',event)"><IMG NAME="c5" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell--><TD ID="btn_2" style="border-left-style: none; border-right-style: none; border-bottom-style: none;" align=center valign=middle><INPUT type="button" class="btnStyle" name="btn3" value="Course B" onMouseOver="timefunction('mouseover','btn3','Course B')" onClick="recChoice('onclick','btn3','Course B')" onMouseOut="timefunction('mouseout','btn3','Course B')"></TD>
+</TR><TR>
+<!--cell d0(tag:d0)-->
+<TD align=center valign=middle><DIV ID="d0_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="d0_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="d0_td" align=center valign=center width=95 height=45 class="inactTD">Course C</TD></TABLE></DIV><DIV ID="d0_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="d0_tdbox" align=center valign=center width=95 height=45 class="boxTD"></TD></TABLE></DIV><DIV ID="d0_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="d0" onClick="SwitchCont('d0',event)"><IMG NAME="d0" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell-->
+<!--cell d1(tag:d1)-->
+<TD align=center valign=middle><DIV ID="d1_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="d1_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="d1_td" align=center valign=center width=95 height=45 class="actTD">5</TD></TABLE></DIV><DIV ID="d1_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="d1_tdbox" align=center valign=center width=95 height=45 class="boxTD">?</TD></TABLE></DIV><DIV ID="d1_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="d1" onClick="SwitchCont('d1',event)"><IMG NAME="d1" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell-->
+<!--cell d2(tag:d2)-->
+<TD align=center valign=middle><DIV ID="d2_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="d2_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="d2_td" align=center valign=center width=95 height=45 class="actTD">6</TD></TABLE></DIV><DIV ID="d2_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="d2_tdbox" align=center valign=center width=95 height=45 class="boxTD">?</TD></TABLE></DIV><DIV ID="d2_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="d2" onClick="SwitchCont('d2',event)"><IMG NAME="d2" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell-->
+<!--cell d3(tag:d3)-->
+<TD align=center valign=middle><DIV ID="d3_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="d3_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="d3_td" align=center valign=center width=95 height=45 class="actTD">7</TD></TABLE></DIV><DIV ID="d3_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="d3_tdbox" align=center valign=center width=95 height=45 class="boxTD">?</TD></TABLE></DIV><DIV ID="d3_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="d3" onClick="SwitchCont('d3',event)"><IMG NAME="d3" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell-->
+<!--cell d4(tag:d4)-->
+<TD align=center valign=middle><DIV ID="d4_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="d4_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="d4_td" align=center valign=center width=95 height=45 class="actTD">8</TD></TABLE></DIV><DIV ID="d4_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="d4_tdbox" align=center valign=center width=95 height=45 class="boxTD">?</TD></TABLE></DIV><DIV ID="d4_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="d4" onClick="SwitchCont('d4',event)"><IMG NAME="d4" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell-->
+<!--cell d5(tag:d5)-->
+<TD align=center valign=middle><DIV ID="d5_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="d5_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="d5_td" align=center valign=center width=95 height=45 class="actTD">6</TD></TABLE></DIV><DIV ID="d5_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="d5_tdbox" align=center valign=center width=95 height=45 class="boxTD">?</TD></TABLE></DIV><DIV ID="d5_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="d5" onClick="SwitchCont('d5',event)"><IMG NAME="d5" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell--><TD ID="btn_3" style="border-left-style: none; border-right-style: none; border-bottom-style: none;" align=center valign=middle><INPUT type="button" class="btnStyle" name="btn4" value="Course C" onMouseOver="timefunction('mouseover','btn4','Course C')" onClick="recChoice('onclick','btn4','Course C')" onMouseOut="timefunction('mouseout','btn4','Course C')"></TD>
+</TR><TR>
+<!--cell e0(tag:e0)-->
+<TD align=center valign=middle><DIV ID="e0_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="e0_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="e0_td" align=center valign=center width=95 height=45 class="inactTD">Course D</TD></TABLE></DIV><DIV ID="e0_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="e0_tdbox" align=center valign=center width=95 height=45 class="boxTD"></TD></TABLE></DIV><DIV ID="e0_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="e0" onClick="SwitchCont('e0',event)"><IMG NAME="e0" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell-->
+<!--cell e1(tag:e1)-->
+<TD align=center valign=middle><DIV ID="e1_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="e1_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="e1_td" align=center valign=center width=95 height=45 class="actTD">2</TD></TABLE></DIV><DIV ID="e1_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="e1_tdbox" align=center valign=center width=95 height=45 class="boxTD">?</TD></TABLE></DIV><DIV ID="e1_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="e1" onClick="SwitchCont('e1',event)"><IMG NAME="e1" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell-->
+<!--cell e2(tag:e2)-->
+<TD align=center valign=middle><DIV ID="e2_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="e2_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="e2_td" align=center valign=center width=95 height=45 class="actTD">7</TD></TABLE></DIV><DIV ID="e2_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="e2_tdbox" align=center valign=center width=95 height=45 class="boxTD">?</TD></TABLE></DIV><DIV ID="e2_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="e2" onClick="SwitchCont('e2',event)"><IMG NAME="e2" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell-->
+<!--cell e3(tag:e3)-->
+<TD align=center valign=middle><DIV ID="e3_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="e3_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="e3_td" align=center valign=center width=95 height=45 class="actTD">5</TD></TABLE></DIV><DIV ID="e3_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="e3_tdbox" align=center valign=center width=95 height=45 class="boxTD">?</TD></TABLE></DIV><DIV ID="e3_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="e3" onClick="SwitchCont('e3',event)"><IMG NAME="e3" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell-->
+<!--cell e4(tag:e4)-->
+<TD align=center valign=middle><DIV ID="e4_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="e4_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="e4_td" align=center valign=center width=95 height=45 class="actTD">6</TD></TABLE></DIV><DIV ID="e4_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="e4_tdbox" align=center valign=center width=95 height=45 class="boxTD">?</TD></TABLE></DIV><DIV ID="e4_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="e4" onClick="SwitchCont('e4',event)"><IMG NAME="e4" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell-->
+<!--cell e5(tag:e5)-->
+<TD align=center valign=middle><DIV ID="e5_cont" style="position: relative; height: 50px; width: 100px;"><DIV ID="e5_txt" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 1;"><TABLE><TD ID="e5_td" align=center valign=center width=95 height=45 class="actTD">9</TD></TABLE></DIV><DIV ID="e5_box" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; clip: rect(0px 100px 50px 0px); z-index: 2;"><TABLE><TD ID="e5_tdbox" align=center valign=center width=95 height=45 class="boxTD">?</TD></TABLE></DIV><DIV ID="e5_img" STYLE="position: absolute; left: 0px; top: 0px; height: 50px; width: 100px; z-index: 5;"><A HREF="javascript:void(0);" NAME="e5" onClick="SwitchCont('e5',event)"><IMG NAME="e5" SRC="transp.gif" border=0 width=100 height=50></A></DIV></DIV></TD>
+<!--end cell--><TD ID="btn_4" style="border-left-style: none; border-right-style: none; border-bottom-style: none;" align=center valign=middle><INPUT type="button" class="btnStyle" name="btn5" value="Course D" onMouseOver="timefunction('mouseover','btn5','Course D')" onClick="recChoice('onclick','btn5','Course D')" onMouseOut="timefunction('mouseout','btn5','Course D')"></TD>
+</TR></TABLE>
+<!-- END MOUSELAB TABLE -->
+<!--BEGIN postHTML-->
+
+<!--END postHTML--><INPUT type="submit" value="Next Page" onClick=timefunction('submit','submit','submit')></FORM></body></html>
