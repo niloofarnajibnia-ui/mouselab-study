@@ -19,10 +19,10 @@ tag = "a0^a1^a2^a3^a4^a5`"
  + "e0^e1^e2^e3^e4^e5";
 
 txt = "^Difficulty ^Workload ^Instructor Quality ^Personal Interest^Grade Leniency`"
- + "Course A^6^5^7^7^6`"
- + "Course B^5^6^7^6^6`"
- + "Course C^5^5^6^7^7`"
- + "Course D^6^6^7^6^5";
+ + "Course A^4^4^7^7^7`"
+ + "Course B^6^5^8^6^6`"
+ + "Course C^4^6^7^8^6`"
+ + "Course D^5^5^6^6^8";
 
 state = "0^0^0^0^0^0`"
  + "0^1^1^1^1^1`"
@@ -47,14 +47,14 @@ btnType = "button";
 btntxt = "Course Length^Course A^Course B^Course C^Course D";
 btnstate = "0^1^1^1^1";
 btntag = "btn1^btn2^btn3^btn4^btn5";
-to_email = "niloofarnajibnia@gmail.com";
+to_email = "nnajibniaexperiment@gmail.com";
 colFix = true;
 rowFix = true;
 CBpreset = false;
 evtOpen = 1;
 evtClose = 1;
 chkFrm=false;
-warningTxt = "Some questions have not been answered. Please answer all questions before continuing!";
+warningTxt = "The question has not been answered. Please answer the question before continuing!";
 tmTotalSec = 60;
 tmStepSec = 1;
 tmWidthPx = 200;
@@ -109,7 +109,9 @@ loadMatrices();
 <input type=hidden name="condnum" value="">
 <input type=hidden name="to_email" value="">
 <!--BEGIN preHTML-->
-
+ <h3>Decision Task 8 of 12</h3>
+ <p>Please evaluate the options and select one of the courses.</p>
+ 
 <!--END preHTML-->
 <!-- MOUSELAB TABLE -->
 <TABLE border=1>
@@ -211,4 +213,17 @@ loadMatrices();
 <!-- END MOUSELAB TABLE -->
 <!--BEGIN postHTML-->
 
-<!--END postHTML--><INPUT type="submit" value="Next Page" onClick=timefunction('submit','submit','submit')></FORM></body></html>
+<!--END postHTML-->
+<INPUT type="submit" value="Next Page" onClick="prepareNextPage(); timefunction('submit','submit','submit')">
+
+<script>
+function prepareNextPage() {
+  var params = new URLSearchParams(window.location.search);
+  var participantId = params.get("participant_id") || "";
+  document.getElementById("participant_id").value = participantId;
+  document.getElementsByName("nextURL")[0].value =
+    "https://niloofarnajibnia-ui.github.io/mouselab-study/trial9.html?participant_id=" + encodeURIComponent(participantId);
+}
+</script>
+
+</FORM></body></html>
