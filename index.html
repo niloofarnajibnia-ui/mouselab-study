@@ -47,7 +47,7 @@ btnType = "button";
 btntxt = "Course Length^Course A^Course B^Course C^Course D";
 btnstate = "0^1^1^1^1";
 btntag = "btn1^btn2^btn3^btn4^btn5";
-to_email = "niloofarnajibnia@gmail.com";
+to_email = "nnajibniaexperiment@gmail.com";
 colFix = true;
 rowFix = true;
 CBpreset = false;
@@ -109,7 +109,7 @@ loadMatrices();
 <input type=hidden name="condnum" value="">
 <input type=hidden name="to_email" value="">
 <!--BEGIN preHTML-->
- <h3>Decision Task 1 of 16</h3>
+ <h3>Decision Task 1 of 12</h3>
  <p>Please evaluate the options and select one of the courses.</p>
  
 <p>Please enter your participation code:</p>
@@ -216,4 +216,15 @@ loadMatrices();
 <!-- END MOUSELAB TABLE -->
 <!--BEGIN postHTML-->
 
-<!--END postHTML--><INPUT type="submit" value="Next Page" onClick=timefunction('submit','submit','submit')></FORM></body></html>
+<!--END postHTML-->
+<INPUT type="submit" value="Next Page" onClick="prepareNextPage(); timefunction('submit','submit','submit')">
+
+<script>
+function prepareNextPage() {
+  var participantId = document.getElementsByName("participant_id")[0].value;
+  document.getElementsByName("nextURL")[0].value =
+    "https://niloofarnajibnia-ui.github.io/mouselab-study/trial2.html?participant_id=" + encodeURIComponent(participantId);
+}
+</script>
+
+</FORM></body></html>
