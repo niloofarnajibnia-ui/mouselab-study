@@ -21,7 +21,7 @@ tag = "a0^a1^a2^a3^a4^a5`"
 txt = "^Difficulty ^Workload ^Instructor Quality ^Personal Interest^Grade Leniency`"
  + "Course A^5^5^7^7^6`"
  + "Course B^4^6^8^6^6`"
- + "Course C^4^4^7^8^7`"
+ + "Course C^4^5^7^8^6`"
  + "Course D^5^5^6^6^6";
 
 state = "0^0^0^0^0^0`"
@@ -54,7 +54,7 @@ CBpreset = false;
 evtOpen = 1;
 evtClose = 1;
 chkFrm=false;
-warningTxt = "Some questions have not been answered. Please answer all questions before continuing!";
+warningTxt = "The question has not been answered. Please answer the question before continuing!";
 tmTotalSec = 60;
 tmStepSec = 1;
 tmWidthPx = 200;
@@ -109,7 +109,7 @@ loadMatrices();
 <input type=hidden name="condnum" value="">
 <input type=hidden name="to_email" value="">
 <!--BEGIN preHTML-->
- <h3>Decision Task 2 of 16</h3>
+ <h3>Decision Task 2 of 12</h3>
  <p>Please evaluate the options and select one of the courses.</p>
 <!--END preHTML-->
 <!-- MOUSELAB TABLE -->
@@ -212,4 +212,17 @@ loadMatrices();
 <!-- END MOUSELAB TABLE -->
 <!--BEGIN postHTML-->
 
-<!--END postHTML--><INPUT type="submit" value="Next Page" onClick=timefunction('submit','submit','submit')></FORM></body></html>
+<!--END postHTML-->
+<INPUT type="submit" value="Next Page" onClick="prepareNextPage(); timefunction('submit','submit','submit')">
+
+<script>
+function prepareNextPage() {
+  var params = new URLSearchParams(window.location.search);
+  var participantId = params.get("participant_id") || "";
+  document.getElementById("participant_id").value = participantId;
+  document.getElementsByName("nextURL")[0].value =
+    "https://niloofarnajibnia-ui.github.io/mouselab-study/trial3.html?participant_id=" + encodeURIComponent(participantId);
+}
+</script>
+
+</FORM></body></html>
