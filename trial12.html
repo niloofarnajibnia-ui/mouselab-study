@@ -47,7 +47,7 @@ btnType = "button";
 btntxt = "Course Length^Course A^Course B^Course C^Course D";
 btnstate = "0^1^1^1^1";
 btntag = "btn1^btn2^btn3^btn4^btn5";
-to_email = "niloofarnajibnia@gmail.com";
+to_email = "nnajibniaexperiment@gmail.com";
 colFix = true;
 rowFix = true;
 CBpreset = false;
@@ -93,7 +93,7 @@ inactiveClass = "inactTD";
 boxClass = "boxTD";
 cssname = "mlweb.css";
 nextURL = "thanks.html";
-expname = "trial16";
+expname = "trial12";
 randomOrder = false;
 recOpenCells = false;
 masterCond = 1;
@@ -109,7 +109,9 @@ loadMatrices();
 <input type=hidden name="condnum" value="">
 <input type=hidden name="to_email" value="">
 <!--BEGIN preHTML-->
-
+ <h3>Decision Task 12 of 12</h3>
+ <p>Please evaluate the options and select one of the courses.</p>
+ 
 <!--END preHTML-->
 <!-- MOUSELAB TABLE -->
 <TABLE border=1>
@@ -257,4 +259,18 @@ loadMatrices();
     <td><input type="radio" name="uncertain3" value="7"></td>
   </tr>
 </table>
-<!--END postHTML--><INPUT type="submit" value="complete" onClick=timefunction('submit','submit','submit')></FORM></body></html>
+
+ <!--END postHTML-->
+<INPUT type="submit" value="Next Page" onClick="prepareNextPage(); timefunction('submit','submit','submit')">
+
+<script>
+function prepareNextPage() {
+  var params = new URLSearchParams(window.location.search);
+  var participantId = params.get("participant_id") || "";
+  document.getElementById("participant_id").value = participantId;
+  document.getElementsByName("nextURL")[0].value =
+    "https://niloofarnajibnia-ui.github.io/mouselab-study/thanks.html?participant_id=" + encodeURIComponent(participantId);
+}
+</script>
+
+</FORM></body></html>
