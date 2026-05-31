@@ -109,6 +109,7 @@ loadMatrices();
 <input type=hidden name="condnum" value="">
 <input type="hidden" name="to_email" value="nnajibniaexperiment@gmail.com">
 <input type="hidden" name="participant_id" id="participant_id">
+<input type="hidden" name="sona_id" id="sona_id">
 <!--BEGIN preHTML-->
  <h3>Decision Task 9 of 12</h3>
  <p>Please evaluate the options and select one of the courses.</p>
@@ -220,10 +221,18 @@ loadMatrices();
 <script>
 function prepareNextPage() {
   var params = new URLSearchParams(window.location.search);
+
   var participantId = params.get("participant_id") || "";
+  var sonaId = params.get("id") || "";
+
   document.getElementById("participant_id").value = participantId;
+  document.getElementById("sona_id").value = sonaId;
+
   document.getElementsByName("nextURL")[0].value =
-    "https://niloofarnajibnia-ui.github.io/mouselab-study/trial10.html?participant_id=" + encodeURIComponent(participantId);
+    "https://niloofarnajibnia-ui.github.io/mouselab-study/trial10.html?participant_id="
+    + encodeURIComponent(participantId)
+    + "&id="
+    + encodeURIComponent(sonaId);
 }
 </script>
 
