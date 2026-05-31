@@ -3,7 +3,11 @@
 <TITLE>Debriefing</TITLE>
 <link rel="stylesheet" href="mlweb.css" type="text/css">
 </HEAD>
+<script>
+const params = new URLSearchParams(window.location.search);
 
+alert("ID received in thanks.html = " + params.get("id"));
+</script>
 <body>
 
 <h1 align="center"><strong>Your response has been recorded. You will receive course credit within 24 hours.</strong></h1>
