@@ -48,8 +48,19 @@ Email: hrpp@ttu.edu
 
 <p align="center">
 <strong>Thank you for your participation.</strong><br>
-You may now close your browser window.
+You will now be redirected to the study completion page.
 </p>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const sonaId = params.get("id") || "";
+
+setTimeout(function() {
+  window.location.href =
+    "https://ttupsy.sona-systems.com/webstudy_credit.aspx?experiment_id=1588&credit_token=be1e0068f4ec4f9185cc445853daad41&survey_code="
+    + encodeURIComponent(sonaId);
+}, 5000);
+</script>
 
 </body>
 </html>
