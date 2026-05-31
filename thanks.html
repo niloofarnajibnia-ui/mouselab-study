@@ -52,18 +52,7 @@ A new tab will open to confirm your course credit. If it does not open, please a
 </p>
 
 <script>
-const params = new URLSearchParams(window.location.search);
-
-let sonaId = params.get("id") || "";
-sonaId = sonaId.split("?")[0];
-
-const sonaURL =
-  "https://ttupsy.sona-systems.com/webstudy_credit.aspx?experiment_id=1588&credit_token=be1e0068f4ec4f9185cc445853daad41&survey_code="
-  + encodeURIComponent(sonaId);
-
-setTimeout(function() {
-  window.open(sonaURL, "_blank");
-}, 3000);
+alert(window.location.href);
 </script>
 
 </body>
