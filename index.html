@@ -115,6 +115,8 @@ loadMatrices();
 <p>Please enter your participation code:</p>
 <input type="text" name="participant_id" required>
 
+<input type="hidden" name="sona_id" id="sona_id">
+
 <!--END preHTML-->
 <!-- MOUSELAB TABLE -->
 <TABLE border=1>
@@ -222,8 +224,17 @@ loadMatrices();
 <script>
 function prepareNextPage() {
   var participantId = document.getElementsByName("participant_id")[0].value;
+
+  var params = new URLSearchParams(window.location.search);
+  var sonaId = params.get("id") || "";
+
+  document.getElementById("sona_id").value = sonaId;
+
   document.getElementsByName("nextURL")[0].value =
-    "https://niloofarnajibnia-ui.github.io/mouselab-study/trial2.html?participant_id=" + encodeURIComponent(participantId);
+    "https://niloofarnajibnia-ui.github.io/mouselab-study/trial2.html?participant_id="
+    + encodeURIComponent(participantId)
+    + "&id="
+    + encodeURIComponent(sonaId);
 }
 </script>
 
