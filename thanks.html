@@ -53,7 +53,11 @@ A new tab will open to confirm your course credit. If it does not open, please a
 
 <script>
 const params = new URLSearchParams(window.location.search);
-const sonaId = params.get("id") || "";
+
+// Get only the real SONA code before any extra MouseLab text
+let sonaId = params.get("id") || "";
+sonaId = sonaId.split("?")[0];
+sonaId = sonaId.split("&")[0];
 
 setTimeout(function() {
   var sonaURL =
@@ -63,6 +67,6 @@ setTimeout(function() {
   window.open(sonaURL, "_blank");
 }, 3000);
 </script>
-
+  
 </body>
 </html>
